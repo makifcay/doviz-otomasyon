@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.bankaButton = new FontAwesome.Sharp.IconButton();
             this.kurlarButton = new FontAwesome.Sharp.IconButton();
             this.muhasebeButton = new FontAwesome.Sharp.IconButton();
             this.alisSatisButton = new FontAwesome.Sharp.IconButton();
             this.TopBPanel = new System.Windows.Forms.Panel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.TopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -62,15 +67,16 @@
             this.bankaButton.IconChar = FontAwesome.Sharp.IconChar.University;
             this.bankaButton.IconColor = System.Drawing.Color.WhiteSmoke;
             this.bankaButton.IconSize = 30;
-            this.bankaButton.Location = new System.Drawing.Point(423, 0);
+            this.bankaButton.Location = new System.Drawing.Point(424, 0);
             this.bankaButton.Name = "bankaButton";
             this.bankaButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bankaButton.Rotation = 0D;
             this.bankaButton.Size = new System.Drawing.Size(140, 56);
-            this.bankaButton.TabIndex = 7;
+            this.bankaButton.TabIndex = 4;
             this.bankaButton.Text = "Banka Kurları";
             this.bankaButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bankaButton.UseVisualStyleBackColor = false;
+            this.bankaButton.Click += new System.EventHandler(this.bankaButton_Click);
             // 
             // kurlarButton
             // 
@@ -84,15 +90,16 @@
             this.kurlarButton.IconChar = FontAwesome.Sharp.IconChar.ChartArea;
             this.kurlarButton.IconColor = System.Drawing.Color.WhiteSmoke;
             this.kurlarButton.IconSize = 30;
-            this.kurlarButton.Location = new System.Drawing.Point(282, 0);
+            this.kurlarButton.Location = new System.Drawing.Point(283, 0);
             this.kurlarButton.Name = "kurlarButton";
             this.kurlarButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.kurlarButton.Rotation = 0D;
             this.kurlarButton.Size = new System.Drawing.Size(140, 56);
-            this.kurlarButton.TabIndex = 6;
+            this.kurlarButton.TabIndex = 3;
             this.kurlarButton.Text = "Kurlar";
             this.kurlarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.kurlarButton.UseVisualStyleBackColor = false;
+            this.kurlarButton.Click += new System.EventHandler(this.kurlarButton_Click);
             // 
             // muhasebeButton
             // 
@@ -106,15 +113,16 @@
             this.muhasebeButton.IconChar = FontAwesome.Sharp.IconChar.Calculator;
             this.muhasebeButton.IconColor = System.Drawing.Color.WhiteSmoke;
             this.muhasebeButton.IconSize = 30;
-            this.muhasebeButton.Location = new System.Drawing.Point(141, 0);
+            this.muhasebeButton.Location = new System.Drawing.Point(142, 0);
             this.muhasebeButton.Name = "muhasebeButton";
             this.muhasebeButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.muhasebeButton.Rotation = 0D;
             this.muhasebeButton.Size = new System.Drawing.Size(140, 56);
-            this.muhasebeButton.TabIndex = 5;
+            this.muhasebeButton.TabIndex = 2;
             this.muhasebeButton.Text = "Muhasebe";
             this.muhasebeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.muhasebeButton.UseVisualStyleBackColor = false;
+            this.muhasebeButton.Click += new System.EventHandler(this.muhasebeButton_Click);
             // 
             // alisSatisButton
             // 
@@ -128,16 +136,16 @@
             this.alisSatisButton.IconChar = FontAwesome.Sharp.IconChar.Coins;
             this.alisSatisButton.IconColor = System.Drawing.Color.WhiteSmoke;
             this.alisSatisButton.IconSize = 30;
-            this.alisSatisButton.Location = new System.Drawing.Point(0, 0);
+            this.alisSatisButton.Location = new System.Drawing.Point(1, 0);
             this.alisSatisButton.Name = "alisSatisButton";
             this.alisSatisButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.alisSatisButton.Rotation = 0D;
             this.alisSatisButton.Size = new System.Drawing.Size(140, 56);
-            this.alisSatisButton.TabIndex = 4;
+            this.alisSatisButton.TabIndex = 1;
             this.alisSatisButton.Text = "Alış/Satış";
             this.alisSatisButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.alisSatisButton.UseVisualStyleBackColor = false;
-            this.alisSatisButton.Click += new System.EventHandler(this.ıconButton3_Click);
+            this.alisSatisButton.Click += new System.EventHandler(this.alisSatisButton_Click);
             // 
             // TopBPanel
             // 
@@ -147,6 +155,23 @@
             this.TopBPanel.Name = "TopBPanel";
             this.TopBPanel.Size = new System.Drawing.Size(982, 11);
             this.TopBPanel.TabIndex = 1;
+            this.TopBPanel.Visible = false;
+            // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(12, 73);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(958, 300);
+            this.chart1.TabIndex = 2;
+            this.chart1.Text = "chart1";
             // 
             // FormMain
             // 
@@ -154,6 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(982, 553);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.TopBPanel);
             this.Controls.Add(this.TopPanel);
             this.Font = new System.Drawing.Font("Corbel", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -164,6 +190,7 @@
             this.Text = "Döviz Otomasyon";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.TopPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -181,6 +208,7 @@
         private FontAwesome.Sharp.IconButton bankaButton;
         private FontAwesome.Sharp.IconButton kurlarButton;
         private FontAwesome.Sharp.IconButton muhasebeButton;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 
