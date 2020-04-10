@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 using FontAwesome;
 
+using LiveCharts;
+using LiveCharts.Wpf;
+
 namespace DovizOtomasyon
 {
     public partial class FormMain : Form
@@ -32,19 +35,46 @@ namespace DovizOtomasyon
         {
 
         }
-        private void ıconButton1_Click(object sender, EventArgs e)
-        {
 
+        private void alisSatisButton_Click(object sender, EventArgs e)
+        {
+            allTopButtons_Default();
+            TopBPanel.BackColor = System.Drawing.Color.FromArgb(255, 0, 0); // 27; 79; 143
+
+            alisSatisButton.BackColor = System.Drawing.Color.FromArgb(255, 0, 0);//105, 157, 240
+            alisSatisButton.IconColor = System.Drawing.Color.Gold;
         }
 
-        private void ıconButton1_Click_1(object sender, EventArgs e)
+        private void muhasebeButton_Click(object sender, EventArgs e)
         {
-
+            allTopButtons_Default();
+            TopBPanel.BackColor = System.Drawing.Color.FromArgb(105, 157, 240); // 27; 79; 143
+            muhasebeButton.BackColor = System.Drawing.Color.FromArgb(105, 157, 240);//105, 157, 240
         }
 
-        private void ıconButton3_Click(object sender, EventArgs e)
+        private void kurlarButton_Click(object sender, EventArgs e)
         {
-            TopBPanel.BackColor = System.Drawing.Color.FromArgb(27, 79, 143); // 27; 79; 143
+            allTopButtons_Default();
+            TopBPanel.BackColor = System.Drawing.Color.FromArgb(105, 157, 240); // 27; 79; 143
+            kurlarButton.BackColor = System.Drawing.Color.FromArgb(105, 157, 240);//105, 157, 240
+        }
+
+        private void bankaButton_Click(object sender, EventArgs e)
+        {
+            allTopButtons_Default();
+            TopBPanel.BackColor = System.Drawing.Color.FromArgb(105, 157, 240); // 27; 79; 143
+            bankaButton.BackColor = System.Drawing.Color.FromArgb(105, 157, 240);//105, 157, 240
+        }
+
+        //Tüm butonları sıfırla
+        private void allTopButtons_Default()
+        {
+            alisSatisButton.BackColor = System.Drawing.Color.FromArgb(27, 79, 143);//27; 79; 143
+            muhasebeButton.BackColor = System.Drawing.Color.FromArgb(27, 79, 143);//27; 79; 143
+            kurlarButton.BackColor = System.Drawing.Color.FromArgb(27, 79, 143);//27; 79; 143
+            bankaButton.BackColor = System.Drawing.Color.FromArgb(27, 79, 143);
+
+            alisSatisButton.IconColor = System.Drawing.Color.WhiteSmoke;
         }
 
     }
