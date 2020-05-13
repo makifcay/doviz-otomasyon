@@ -43,9 +43,9 @@ namespace DovizOtomasyon
             alisSatisPanel.Visible = true;
 
             TopBPanel.BackColor = System.Drawing.Color.FromArgb(255, 0, 0); // 27; 79; 143
-
-            alisSatisButton.BackColor = System.Drawing.Color.FromArgb(255, 0, 0);//105, 157, 240
-            alisSatisButton.IconColor = System.Drawing.Color.Gold;
+            alisSatisButton.BackColor = System.Drawing.Color.FromArgb(105, 157, 240);//105, 157, 240
+            //alisSatisButton.BackColor = System.Drawing.Color.FromArgb(255, 0, 0);//105, 157, 240
+            //alisSatisButton.IconColor = System.Drawing.Color.Gold;
         }
 
         private void muhasebeButton_Click(object sender, EventArgs e)
@@ -95,13 +95,9 @@ namespace DovizOtomasyon
             muhasebePanel.Visible = false;
             kurlarPanel.Visible = false;
             bankaKurlarPanel.Visible = false;
-
         }
 
-        private void kullaniciButon_Click(object sender, EventArgs e)
-        {
 
-        }
 
     }
 }
