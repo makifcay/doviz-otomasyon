@@ -100,7 +100,9 @@ namespace DovizOtomasyon
 
         private void kullaniciButon_Click(object sender, EventArgs e)
         {
-
+            kullanici form2 = new kullanici();
+            form2.Show(); //form2 göster diyoruz
+            
         }
 
     }
