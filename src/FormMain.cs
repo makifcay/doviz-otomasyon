@@ -39,6 +39,9 @@ namespace DovizOtomasyon
         private void alisSatisButton_Click(object sender, EventArgs e)
         {
             allTopButtons_Default();
+            allMainPanels_Invisible();
+            alisSatisPanel.Visible = true;
+
             TopBPanel.BackColor = System.Drawing.Color.FromArgb(255, 0, 0); // 27; 79; 143
 
             alisSatisButton.BackColor = System.Drawing.Color.FromArgb(255, 0, 0);//105, 157, 240
@@ -48,6 +51,8 @@ namespace DovizOtomasyon
         private void muhasebeButton_Click(object sender, EventArgs e)
         {
             allTopButtons_Default();
+            allMainPanels_Invisible();
+            muhasebePanel.Visible = true;
             TopBPanel.BackColor = System.Drawing.Color.FromArgb(105, 157, 240); // 27; 79; 143
             muhasebeButton.BackColor = System.Drawing.Color.FromArgb(105, 157, 240);//105, 157, 240
         }
@@ -55,6 +60,9 @@ namespace DovizOtomasyon
         private void kurlarButton_Click(object sender, EventArgs e)
         {
             allTopButtons_Default();
+            allMainPanels_Invisible();
+            kurlarPanel.Visible = true;
+
             TopBPanel.BackColor = System.Drawing.Color.FromArgb(105, 157, 240); // 27; 79; 143
             kurlarButton.BackColor = System.Drawing.Color.FromArgb(105, 157, 240);//105, 157, 240
         }
@@ -62,6 +70,9 @@ namespace DovizOtomasyon
         private void bankaButton_Click(object sender, EventArgs e)
         {
             allTopButtons_Default();
+            allMainPanels_Invisible();
+            bankaKurlarPanel.Visible = true;
+
             TopBPanel.BackColor = System.Drawing.Color.FromArgb(105, 157, 240); // 27; 79; 143
             bankaButton.BackColor = System.Drawing.Color.FromArgb(105, 157, 240);//105, 157, 240
         }
@@ -75,6 +86,21 @@ namespace DovizOtomasyon
             bankaButton.BackColor = System.Drawing.Color.FromArgb(27, 79, 143);
 
             alisSatisButton.IconColor = System.Drawing.Color.WhiteSmoke;
+        }
+
+        //Tüm ekranları kapat
+        private void allMainPanels_Invisible()
+        {
+            alisSatisPanel.Visible = false;
+            muhasebePanel.Visible = false;
+            kurlarPanel.Visible = false;
+            bankaKurlarPanel.Visible = false;
+
+        }
+
+        private void kullaniciButon_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
