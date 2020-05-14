@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.kullaniciButon = new FontAwesome.Sharp.IconButton();
             this.bankaButton = new FontAwesome.Sharp.IconButton();
@@ -39,22 +36,22 @@
             this.alisSatisButton = new FontAwesome.Sharp.IconButton();
             this.TopBPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.muhasebePanel = new System.Windows.Forms.Panel();
-            this.muhasebeLabel = new System.Windows.Forms.Label();
             this.alisSatisPanel = new System.Windows.Forms.Panel();
             this.alisSatisLabel = new System.Windows.Forms.Label();
             this.kurlarPanel = new System.Windows.Forms.Panel();
             this.kurlarLabel = new System.Windows.Forms.Label();
             this.bankaKurlarPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.muhasebePanel = new System.Windows.Forms.Panel();
+            this.muhasebeLabel = new System.Windows.Forms.Label();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.cartesianChart1 = new LiveCharts.Wpf.CartesianChart();
             this.TopPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
-            this.muhasebePanel.SuspendLayout();
             this.alisSatisPanel.SuspendLayout();
             this.kurlarPanel.SuspendLayout();
             this.bankaKurlarPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.muhasebePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -91,7 +88,6 @@
             this.kullaniciButon.Size = new System.Drawing.Size(34, 56);
             this.kullaniciButon.TabIndex = 5;
             this.kullaniciButon.UseVisualStyleBackColor = false;
-            this.kullaniciButon.Click += new System.EventHandler(this.kullaniciButon_Click);
             // 
             // bankaButton
             // 
@@ -193,11 +189,13 @@
             this.TopBPanel.Name = "TopBPanel";
             this.TopBPanel.Size = new System.Drawing.Size(982, 11);
             this.TopBPanel.TabIndex = 1;
+            this.TopBPanel.Visible = false;
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.bankaKurlarPanel);
+            this.mainPanel.Controls.Add(this.alisSatisPanel);
             this.mainPanel.Controls.Add(this.kurlarPanel);
+            this.mainPanel.Controls.Add(this.bankaKurlarPanel);
             this.mainPanel.Controls.Add(this.muhasebePanel);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 67);
@@ -205,30 +203,12 @@
             this.mainPanel.Size = new System.Drawing.Size(982, 486);
             this.mainPanel.TabIndex = 2;
             // 
-            // muhasebePanel
-            // 
-            this.muhasebePanel.Controls.Add(this.muhasebeLabel);
-            this.muhasebePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.muhasebePanel.Location = new System.Drawing.Point(0, 0);
-            this.muhasebePanel.Name = "muhasebePanel";
-            this.muhasebePanel.Size = new System.Drawing.Size(982, 486);
-            this.muhasebePanel.TabIndex = 4;
-            // 
-            // muhasebeLabel
-            // 
-            this.muhasebeLabel.AutoSize = true;
-            this.muhasebeLabel.Location = new System.Drawing.Point(33, 37);
-            this.muhasebeLabel.Name = "muhasebeLabel";
-            this.muhasebeLabel.Size = new System.Drawing.Size(104, 18);
-            this.muhasebeLabel.TabIndex = 0;
-            this.muhasebeLabel.Text = "muhasebeLabel";
-            // 
             // alisSatisPanel
             // 
-            this.alisSatisPanel.Controls.Add(this.chart1);
+            this.alisSatisPanel.Controls.Add(this.elementHost1);
             this.alisSatisPanel.Controls.Add(this.alisSatisLabel);
             this.alisSatisPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.alisSatisPanel.Location = new System.Drawing.Point(0, 67);
+            this.alisSatisPanel.Location = new System.Drawing.Point(0, 0);
             this.alisSatisPanel.Name = "alisSatisPanel";
             this.alisSatisPanel.Size = new System.Drawing.Size(982, 486);
             this.alisSatisPanel.TabIndex = 3;
@@ -278,21 +258,32 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Banka Kurları";
             // 
-            // chart1
+            // muhasebePanel
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(95, 58);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(676, 300);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
+            this.muhasebePanel.Controls.Add(this.muhasebeLabel);
+            this.muhasebePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.muhasebePanel.Location = new System.Drawing.Point(0, 0);
+            this.muhasebePanel.Name = "muhasebePanel";
+            this.muhasebePanel.Size = new System.Drawing.Size(982, 486);
+            this.muhasebePanel.TabIndex = 4;
+            // 
+            // muhasebeLabel
+            // 
+            this.muhasebeLabel.AutoSize = true;
+            this.muhasebeLabel.Location = new System.Drawing.Point(33, 37);
+            this.muhasebeLabel.Name = "muhasebeLabel";
+            this.muhasebeLabel.Size = new System.Drawing.Size(104, 18);
+            this.muhasebeLabel.TabIndex = 0;
+            this.muhasebeLabel.Text = "muhasebeLabel";
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(12, 6);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(958, 322);
+            this.elementHost1.TabIndex = 1;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.cartesianChart1;
             // 
             // FormMain
             // 
@@ -300,7 +291,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(982, 553);
-            this.Controls.Add(this.alisSatisPanel);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.TopBPanel);
             this.Controls.Add(this.TopPanel);
@@ -313,15 +303,14 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.TopPanel.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
-            this.muhasebePanel.ResumeLayout(false);
-            this.muhasebePanel.PerformLayout();
             this.alisSatisPanel.ResumeLayout(false);
             this.alisSatisPanel.PerformLayout();
             this.kurlarPanel.ResumeLayout(false);
             this.kurlarPanel.PerformLayout();
             this.bankaKurlarPanel.ResumeLayout(false);
             this.bankaKurlarPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.muhasebePanel.ResumeLayout(false);
+            this.muhasebePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -349,7 +338,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel kurlarPanel;
         private System.Windows.Forms.Label kurlarLabel;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private LiveCharts.Wpf.CartesianChart cartesianChart1;
     }
 }
 
