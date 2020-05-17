@@ -77,7 +77,7 @@ namespace DovizOtomasyon
             bankaButton.BackColor = System.Drawing.Color.FromArgb(105, 157, 240);//105, 157, 240
         }
 
-        //Tüm butonları sıfırla
+        // Tüm butonların biçimlendirmelerini sıfırla
         private void allTopButtons_Default()
         {
             alisSatisButton.BackColor = System.Drawing.Color.FromArgb(27, 79, 143);//27; 79; 143
@@ -88,7 +88,7 @@ namespace DovizOtomasyon
             alisSatisButton.IconColor = System.Drawing.Color.WhiteSmoke;
         }
 
-        //Tüm ekranları kapat
+        // Tüm ekranları kapat
         private void allMainPanels_Invisible()
         {
             alisSatisPanel.Visible = false;
@@ -97,7 +97,11 @@ namespace DovizOtomasyon
             bankaKurlarPanel.Visible = false;
         }
 
-
-
+        private void kullaniciButon_Click(object sender, EventArgs e)
+        {
+            Form kullanici = new kullanici();
+            kullanici.Show();
+            kullaniciButon.Enabled = false;
+        }
     }
 }

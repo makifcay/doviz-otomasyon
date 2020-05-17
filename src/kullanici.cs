@@ -17,8 +17,24 @@ namespace DovizOtomasyon
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        bool goster = false;
+        private void sifreGosterButton_Click(object sender, EventArgs e)
         {
+
+
+            if (goster == false)
+            {
+                sifreGosterButton.IconChar = FontAwesome.Sharp.IconChar.Eye;
+                goster = true;
+                sifreTextBox.PasswordChar = '*';
+            }
+
+            else
+            {
+                sifreGosterButton.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+                goster = false;
+                sifreTextBox.PasswordChar = '\0';
+            }
 
         }
     }
