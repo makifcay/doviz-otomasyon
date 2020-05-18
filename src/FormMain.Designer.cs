@@ -37,6 +37,8 @@
             this.TopBPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.alisSatisPanel = new System.Windows.Forms.Panel();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.cartesianChart1 = new LiveCharts.Wpf.CartesianChart();
             this.alisSatisLabel = new System.Windows.Forms.Label();
             this.kurlarPanel = new System.Windows.Forms.Panel();
             this.kurlarLabel = new System.Windows.Forms.Label();
@@ -44,8 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.muhasebePanel = new System.Windows.Forms.Panel();
             this.muhasebeLabel = new System.Windows.Forms.Label();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.cartesianChart1 = new LiveCharts.Wpf.CartesianChart();
             this.TopPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.alisSatisPanel.SuspendLayout();
@@ -88,6 +88,7 @@
             this.kullaniciButon.Size = new System.Drawing.Size(34, 56);
             this.kullaniciButon.TabIndex = 5;
             this.kullaniciButon.UseVisualStyleBackColor = false;
+            this.kullaniciButon.Click += new System.EventHandler(this.kullaniciButon_Click);
             // 
             // bankaButton
             // 
@@ -213,6 +214,15 @@
             this.alisSatisPanel.Size = new System.Drawing.Size(982, 486);
             this.alisSatisPanel.TabIndex = 3;
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(12, 6);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(958, 322);
+            this.elementHost1.TabIndex = 1;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.cartesianChart1;
+            // 
             // alisSatisLabel
             // 
             this.alisSatisLabel.AutoSize = true;
@@ -275,15 +285,6 @@
             this.muhasebeLabel.Size = new System.Drawing.Size(104, 18);
             this.muhasebeLabel.TabIndex = 0;
             this.muhasebeLabel.Text = "muhasebeLabel";
-            // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(12, 6);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(958, 322);
-            this.elementHost1.TabIndex = 1;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = this.cartesianChart1;
             // 
             // FormMain
             // 

@@ -28,139 +28,162 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.G = new FontAwesome.Sharp.IconButton();
-            this.kullanici_txt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.sifre_txt = new System.Windows.Forms.TextBox();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.sifreLabel = new System.Windows.Forms.Label();
+            this.kullaniciFormPanel = new System.Windows.Forms.Panel();
+            this.sifreGosterButton = new FontAwesome.Sharp.IconButton();
+            this.ayarlarButton = new FontAwesome.Sharp.IconButton();
+            this.sifreTextBox = new System.Windows.Forms.TextBox();
+            this.girisButton = new FontAwesome.Sharp.IconButton();
+            this.kullaniciTextBox = new System.Windows.Forms.TextBox();
+            this.kullaniciAdiLabel = new System.Windows.Forms.Label();
+            this.kullaniciFormPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label2
+            // sifreLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 100);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Şifre :";
+            this.sifreLabel.AutoSize = true;
+            this.sifreLabel.Font = new System.Drawing.Font("Corbel", 7.8F);
+            this.sifreLabel.Location = new System.Drawing.Point(22, 56);
+            this.sifreLabel.Name = "sifreLabel";
+            this.sifreLabel.Size = new System.Drawing.Size(42, 17);
+            this.sifreLabel.TabIndex = 1;
+            this.sifreLabel.Text = "Şifre :";
             // 
-            // panel1
+            // kullaniciFormPanel
             // 
-            this.panel1.Controls.Add(this.iconButton1);
-            this.panel1.Controls.Add(this.sifre_txt);
-            this.panel1.Controls.Add(this.G);
-            this.panel1.Controls.Add(this.kullanici_txt);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(475, 358);
-            this.panel1.TabIndex = 2;
+            this.kullaniciFormPanel.Controls.Add(this.sifreGosterButton);
+            this.kullaniciFormPanel.Controls.Add(this.ayarlarButton);
+            this.kullaniciFormPanel.Controls.Add(this.sifreTextBox);
+            this.kullaniciFormPanel.Controls.Add(this.girisButton);
+            this.kullaniciFormPanel.Controls.Add(this.kullaniciTextBox);
+            this.kullaniciFormPanel.Controls.Add(this.kullaniciAdiLabel);
+            this.kullaniciFormPanel.Controls.Add(this.sifreLabel);
+            this.kullaniciFormPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kullaniciFormPanel.Location = new System.Drawing.Point(0, 0);
+            this.kullaniciFormPanel.Name = "kullaniciFormPanel";
+            this.kullaniciFormPanel.Size = new System.Drawing.Size(301, 150);
+            this.kullaniciFormPanel.TabIndex = 2;
             // 
-            // G
+            // sifreGosterButton
             // 
-            this.G.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(79)))), ((int)(((byte)(143)))));
-            this.G.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.G.FlatAppearance.BorderSize = 0;
-            this.G.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.G.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.G.Font = new System.Drawing.Font("Corbel", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.G.ForeColor = System.Drawing.Color.Snow;
-            this.G.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
-            this.G.IconColor = System.Drawing.Color.WhiteSmoke;
-            this.G.IconSize = 30;
-            this.G.Location = new System.Drawing.Point(51, 217);
-            this.G.Name = "G";
-            this.G.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.G.Rotation = 0D;
-            this.G.Size = new System.Drawing.Size(140, 34);
-            this.G.TabIndex = 5;
-            this.G.Text = "GİRİŞ";
-            this.G.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.G.UseVisualStyleBackColor = false;
+            this.sifreGosterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(79)))), ((int)(((byte)(143)))));
+            this.sifreGosterButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.sifreGosterButton.FlatAppearance.BorderSize = 0;
+            this.sifreGosterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sifreGosterButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.sifreGosterButton.Font = new System.Drawing.Font("Corbel", 9F);
+            this.sifreGosterButton.ForeColor = System.Drawing.Color.Snow;
+            this.sifreGosterButton.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            this.sifreGosterButton.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.sifreGosterButton.IconSize = 25;
+            this.sifreGosterButton.Location = new System.Drawing.Point(247, 49);
+            this.sifreGosterButton.Name = "sifreGosterButton";
+            this.sifreGosterButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.sifreGosterButton.Rotation = 0D;
+            this.sifreGosterButton.Size = new System.Drawing.Size(30, 30);
+            this.sifreGosterButton.TabIndex = 8;
+            this.sifreGosterButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.sifreGosterButton.UseVisualStyleBackColor = false;
+            this.sifreGosterButton.Click += new System.EventHandler(this.sifreGosterButton_Click);
             // 
-            // kullanici_txt
+            // ayarlarButton
             // 
-            this.kullanici_txt.Location = new System.Drawing.Point(191, 42);
-            this.kullanici_txt.Name = "kullanici_txt";
-            this.kullanici_txt.Size = new System.Drawing.Size(120, 22);
-            this.kullanici_txt.TabIndex = 3;
+            this.ayarlarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(79)))), ((int)(((byte)(143)))));
+            this.ayarlarButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.ayarlarButton.FlatAppearance.BorderSize = 0;
+            this.ayarlarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ayarlarButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ayarlarButton.Font = new System.Drawing.Font("Corbel", 9F);
+            this.ayarlarButton.ForeColor = System.Drawing.Color.Snow;
+            this.ayarlarButton.IconChar = FontAwesome.Sharp.IconChar.Tools;
+            this.ayarlarButton.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.ayarlarButton.IconSize = 25;
+            this.ayarlarButton.Location = new System.Drawing.Point(130, 98);
+            this.ayarlarButton.Name = "ayarlarButton";
+            this.ayarlarButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ayarlarButton.Rotation = 0D;
+            this.ayarlarButton.Size = new System.Drawing.Size(120, 31);
+            this.ayarlarButton.TabIndex = 7;
+            this.ayarlarButton.Text = "Ayarlar";
+            this.ayarlarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ayarlarButton.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // sifreTextBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(48, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Kullanıcı Adı :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.sifreTextBox.Location = new System.Drawing.Point(121, 53);
+            this.sifreTextBox.Name = "sifreTextBox";
+            this.sifreTextBox.PasswordChar = '*';
+            this.sifreTextBox.Size = new System.Drawing.Size(120, 22);
+            this.sifreTextBox.TabIndex = 6;
             // 
-            // errorProvider1
+            // girisButton
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.girisButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(79)))), ((int)(((byte)(143)))));
+            this.girisButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.girisButton.FlatAppearance.BorderSize = 0;
+            this.girisButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.girisButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.girisButton.Font = new System.Drawing.Font("Corbel", 9F);
+            this.girisButton.ForeColor = System.Drawing.Color.Snow;
+            this.girisButton.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            this.girisButton.IconColor = System.Drawing.Color.WhiteSmoke;
+            this.girisButton.IconSize = 25;
+            this.girisButton.Location = new System.Drawing.Point(12, 98);
+            this.girisButton.Name = "girisButton";
+            this.girisButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.girisButton.Rotation = 0D;
+            this.girisButton.Size = new System.Drawing.Size(112, 31);
+            this.girisButton.TabIndex = 5;
+            this.girisButton.Text = "Giriş";
+            this.girisButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.girisButton.UseVisualStyleBackColor = false;
             // 
-            // sifre_txt
+            // kullaniciTextBox
             // 
-            this.sifre_txt.Location = new System.Drawing.Point(191, 95);
-            this.sifre_txt.Name = "sifre_txt";
-            this.sifre_txt.PasswordChar = '*';
-            this.sifre_txt.Size = new System.Drawing.Size(120, 22);
-            this.sifre_txt.TabIndex = 6;
+            this.kullaniciTextBox.Location = new System.Drawing.Point(121, 15);
+            this.kullaniciTextBox.Name = "kullaniciTextBox";
+            this.kullaniciTextBox.Size = new System.Drawing.Size(120, 22);
+            this.kullaniciTextBox.TabIndex = 3;
             // 
-            // iconButton1
+            // kullaniciAdiLabel
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(79)))), ((int)(((byte)(143)))));
-            this.iconButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.Font = new System.Drawing.Font("Corbel", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.iconButton1.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Tools;
-            this.iconButton1.IconColor = System.Drawing.Color.WhiteSmoke;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(264, 217);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(148, 34);
-            this.iconButton1.TabIndex = 7;
-            this.iconButton1.Text = "AYARLAR";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.kullaniciAdiLabel.AutoSize = true;
+            this.kullaniciAdiLabel.Font = new System.Drawing.Font("Corbel", 7.8F);
+            this.kullaniciAdiLabel.Location = new System.Drawing.Point(22, 18);
+            this.kullaniciAdiLabel.Name = "kullaniciAdiLabel";
+            this.kullaniciAdiLabel.Size = new System.Drawing.Size(84, 17);
+            this.kullaniciAdiLabel.TabIndex = 2;
+            this.kullaniciAdiLabel.Text = "Kullanıcı Adı :";
             // 
             // kullanici
             // 
+            this.AcceptButton = this.girisButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 358);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(301, 150);
+            this.Controls.Add(this.kullaniciFormPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.HelpButton = true;
             this.Name = "kullanici";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "kullanici";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.TopMost = true;
+            this.kullaniciFormPanel.ResumeLayout(false);
+            this.kullaniciFormPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox kullanici_txt;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private FontAwesome.Sharp.IconButton G;
-        private System.Windows.Forms.TextBox sifre_txt;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.Label sifreLabel;
+        private System.Windows.Forms.Panel kullaniciFormPanel;
+        private System.Windows.Forms.TextBox kullaniciTextBox;
+        private System.Windows.Forms.Label kullaniciAdiLabel;
+        private FontAwesome.Sharp.IconButton girisButton;
+        private System.Windows.Forms.TextBox sifreTextBox;
+        private FontAwesome.Sharp.IconButton ayarlarButton;
+        private FontAwesome.Sharp.IconButton sifreGosterButton;
     }
 }
