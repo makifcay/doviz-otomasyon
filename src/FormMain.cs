@@ -40,9 +40,9 @@ namespace DovizOtomasyon
         {
             allTopButtons_Default();
             allMainPanels_Invisible();
-            alisSatisPanel.Visible = true;
+            alisSatisMainPanel.Visible = true;
 
-            TopBPanel.BackColor = System.Drawing.Color.FromArgb(255, 0, 0); // 27; 79; 143
+            //TopBPanel.BackColor = System.Drawing.Color.FromArgb(255, 0, 0); // 27; 79; 143
             alisSatisButton.BackColor = System.Drawing.Color.FromArgb(105, 157, 240);//105, 157, 240
             //alisSatisButton.BackColor = System.Drawing.Color.FromArgb(255, 0, 0);//105, 157, 240
             //alisSatisButton.IconColor = System.Drawing.Color.Gold;
@@ -91,7 +91,7 @@ namespace DovizOtomasyon
         // Tüm ekranları kapat
         private void allMainPanels_Invisible()
         {
-            alisSatisPanel.Visible = false;
+            alisSatisMainPanel.Visible = false;
             muhasebePanel.Visible = false;
             kurlarPanel.Visible = false;
             bankaKurlarPanel.Visible = false;
@@ -100,8 +100,43 @@ namespace DovizOtomasyon
         private void kullaniciButon_Click(object sender, EventArgs e)
         {
             Form kullanici = new kullanici();
-            kullanici.Show();
-            kullaniciButon.Enabled = false;
+            kullanici.ShowDialog();
+        }
+
+
+        // Eğer tamamlanmamış bir form doluysa kaydetmeden çıkılacak uyarı penceresi gelecek
+        private void yeniIslemButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void yeniIslemButton_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void alisverisMiktarTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            //
+            // TextBox'a sadece sayı yazılabilmesi ve tek bir nokta kullanılması için yapılan kontroller
+            //
+
+            // Anlık tuşlanan karakteri tutan değişken
+            char ch = e.KeyChar;
+
+            if (ch == 46 && alisverisMiktarTextBox.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // ASCII'de 46 = '.', 8 = backspace
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
