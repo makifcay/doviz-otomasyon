@@ -19,5 +19,6 @@ namespace DovizOtomasyon
             Application.SetCompatibleTextRenderingDefault(true);
             Application.Run(new FormMain());
         }
+
     }
 }
