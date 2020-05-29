@@ -201,11 +201,11 @@ namespace DovizOtomasyon
 
             System.Diagnostics.Process api = new System.Diagnostics.Process();
             api.StartInfo.FileName = @"E:\İşler\Dersler\VeritabaniYonetimSistemleri_SerdarSolak_2\Döviz Otomasyon\api\start.bat";
-            api.StartInfo.WorkingDirectory = @"E:\İşler\Dersler\VeritabaniYonetimSistemleri_SerdarSolak_2\Döviz Otomasyon\api\";
+            api.StartInfo.WorkingDirectory = @"E:\İşler\Dersler\VeritabaniYonetimSistemleri_SerdarSolak_2\Döviz Otomasyon\api";
 
             //https://stackoverflow.com/questions/5377423/hide-console-window-from-process-start-c-sharp
             // Console penceresini gizle
-            api.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            //api.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
             api.Start();
             //Dosya yolunu değiştir
@@ -506,6 +506,7 @@ namespace DovizOtomasyon
             islemTurucomboBox.Enabled = true;
             alisverisMiktarTextBox.Enabled = false;
             alisverisMiktarOndalikTextBox.Enabled = false;
+            karsilikDegerLabel.Text = "-";
 
             // Buton simgesi = kapalı kilit
             kilitleButton.IconChar = FontAwesome.Sharp.IconChar.Lock;
@@ -641,11 +642,145 @@ namespace DovizOtomasyon
         string doviz_tam_adi;
         string doviz_logo;
 
-        string donustur_deger;
+        decimal donustur_deger;
+        decimal karsilik_deger;
+
+        public void kurGuncelle()
+        {
+
+        }
+
+        public void islemGuncelle()
+        {
+
+            //try
+            //{   //// where kullanici_adi='" + kullanici_adi + "'
+
+                // İşlem türünü tespit et kaydet
+                string islemTuruIndex;
+                if (islemTurucomboBox.Text == "Alış")
+                {
+                    islemTuruIndex = Convert.ToString(1);
+                }
+                else
+                {
+                    islemTuruIndex = Convert.ToString(2);
+                }
+
+                //Döviz türünü tespit et
+
+                baglan.Open();
+                string selectQuery = "SELECT * FROM dovizotomasyon.doviz";
+                MySqlCommand komut3 = new MySqlCommand(selectQuery, baglan);
+                string seciliDovizLogo = dovizCinsicomboBox.SelectedItem.ToString();
+                seciliDovizLogo = seciliDovizLogo[0].ToString();
+                komut3.CommandText = "SELECT * FROM doviz WHERE doviz_logo = '" + seciliDovizLogo + "'";
+                oku = komut3.ExecuteReader();
+
+                while (oku.Read())
+                {
+                    doviz_id = Convert.ToString(oku["doviz_id"]);
+                    doviz_adi = Convert.ToString(oku["doviz_adi"]);
+                    doviz_tam_adi = Convert.ToString(oku["doviz_tam_adi"]);
+                    doviz_logo = Convert.ToString(oku["doviz_logo"]);
+                }
+                oku.Close();
+                baglan.Close();
+
+                // Döviz türünü tespit et tamamlandı
+
+
+                // Miktarı kaydet
+                decimal tam_kisim = 0;
+                decimal ondalik_kisim = 0;
+                decimal alisverisMiktar;
+
+                
+
+                if (string.IsNullOrWhiteSpace(alisverisMiktarTextBox.Text) && string.IsNullOrWhiteSpace(alisverisMiktarOndalikTextBox.Text) && alisverisMiktarOndalikTextBox.Text == "0" && alisverisMiktarOndalikTextBox.Text == "00" && alisverisMiktarOndalikTextBox.Text == "000" && alisverisMiktarOndalikTextBox.Text == "0000")
+                {
+                    tam_kisim = 0;
+                    ondalik_kisim = 0;
+                    alisverisMiktar = tam_kisim;
+                    alisverisTest.Text = alisverisMiktar.ToString();
+                }
+
+                else
+                {
+                    tam_kisim = Convert.ToDecimal(alisverisMiktarTextBox.Text);
+                    ondalik_kisim = Convert.ToDecimal(alisverisMiktarOndalikTextBox.Text);
+                    alisverisMiktar = tam_kisim + ondalik_kisim;
+                    
+                }
+
+                double bolme_islemi = Math.Floor(Math.Log10(Convert.ToInt32(ondalik_kisim)) + 1);
+
+                if (alisverisMiktarOndalikTextBox.Text == "0" || alisverisMiktarOndalikTextBox.Text == "00" || alisverisMiktarOndalikTextBox.Text == "000" || alisverisMiktarOndalikTextBox.Text == "0000")
+                {
+                    alisverisMiktar = Convert.ToDecimal(alisverisMiktarTextBox.Text);
+                    ondalik_kisim = 1;
+                }
+
+                else
+                {
+                    ondalik_kisim = (ondalik_kisim / Convert.ToDecimal(Math.Pow(10, bolme_islemi)));
+                }
+                
+                // https://stackoverflow.com/questions/4483886/how-can-i-get-a-count-of-the-total-number-of-digits-in-a-number
+                // Log10(sayı) bize "sayı"nın kaç basamaklı olduğunu verir (yukarı yuvarlanırsa) 
+                // Örnek : Ondalık sayı 23
+                // log10(23) = 1,36 -> yukarı yuvarla -> karakter sayısı = 2
+                // 23 / 10 ^ karakter_sayısı = 0.23
+
+
+
+
+            //Alış satış fiyatını al ve işlem yap
+
+            baglan.Open();
+                string degerQuery = "SELECT * FROM dovizotomasyon.deger";
+                MySqlCommand komut4 = new MySqlCommand(degerQuery, baglan);
+                oku = komut4.ExecuteReader();
+
+                while (oku.Read())
+                {
+                    if (islemTurucomboBox.Text == "Alış")
+                    {
+                        komut4.CommandText = "SELECT * FROM deger.alis_fiyat WHERE doviz_id = " + doviz_id + "";
+                        donustur_deger = Convert.ToDecimal(oku["alis_fiyat"]);
+                        karsilik_deger = (donustur_deger * alisverisMiktar);
+                        karsilikDegerLabel.Text = Convert.ToString(karsilik_deger);
+
+                    }
+                    else
+                    {
+                        komut4.CommandText = "SELECT * FROM deger.satis_fiyat WHERE doviz_id = " + doviz_id + "";
+                        donustur_deger = Convert.ToDecimal(oku["satis_fiyat"]);
+                        karsilik_deger = (donustur_deger / alisverisMiktar);
+                        karsilikDegerLabel.Text = Convert.ToString(karsilik_deger);
+                    }
+                }
+
+                oku.Close();
+                baglan.Close();
+
+            //}
+            //catch (Exception ex)
+            //{
+                //MessageBox.Show("Hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+
+            //finally
+            //{
+                //baglan.Close();
+            //}
+        }
+
+
 
         public void islemTamamla()
-        {   
-
+        {
+            /*
             try
             {   //// where kullanici_adi='" + kullanici_adi + "'
                 
@@ -681,34 +816,7 @@ namespace DovizOtomasyon
                 baglan.Close();
 
                 // Döviz türünü tespit et tamamlandı
-
-
-                // Alış satış fiyatını al ve işlem yap
-                /* ************
-                baglan.Open();
-                string degerQuery = "SELECT * FROM dovizotomasyon.deger";
-                MySqlCommand komut4 = new MySqlCommand(degerQuery, baglan);
-                oku = komut4.ExecuteReader();
-
-                while (oku.Read())
-                {
-                    if (islemTurucomboBox.Text == "Alış")
-                    {
-                        komut4.CommandText = "SELECT * FROM deger.alis_fiyat WHERE doviz_id = '" + doviz_id + "'";
-                        donustur_deger = Convert.ToString(oku["alis_fiyat"]);
-                    }
-                    else
-                    {
-                        komut4.CommandText = "SELECT * FROM deger.satis_fiyat WHERE doviz_id = '" + doviz_id + "'";
-                        donustur_deger = Convert.ToString(oku["satis_fiyat"]);
-                    }
-                }
-
-                oku.Close();
-                baglan.Close();
-
-                // *********** 
-                */
+                
 
                 // Miktarı kaydet
                 baglan.Open();
@@ -733,6 +841,35 @@ namespace DovizOtomasyon
                 command.ExecuteNonQuery();
                 baglan.Close();
 
+                //Alış satış fiyatını al ve işlem yap
+
+                baglan.Open();
+                string degerQuery = "SELECT * FROM dovizotomasyon.deger";
+                MySqlCommand komut4 = new MySqlCommand(degerQuery, baglan);
+                oku = komut4.ExecuteReader();
+
+                while (oku.Read())
+                {
+                    if (islemTurucomboBox.Text == "Alış")
+                    {
+                        komut4.CommandText = "SELECT * FROM deger.alis_fiyat WHERE doviz_id = '" + doviz_id + "'";
+                        donustur_deger = Convert.ToDecimal(oku["alis_fiyat"]);
+                        karsilik_deger = donustur_deger * alisverisMiktar;
+
+                    }
+                    else
+                    {
+                        komut4.CommandText = "SELECT * FROM deger.satis_fiyat WHERE doviz_id = '" + doviz_id + "'";
+                        donustur_deger = Convert.ToDecimal(oku["satis_fiyat"]);
+                        karsilik_deger = donustur_deger * (1 / alisverisMiktar);
+                    }
+                }
+
+                oku.Close();
+                baglan.Close();
+
+                // *********** 
+
                 yeniIslemFormTemizle();
             }
             catch (Exception ex)
@@ -743,6 +880,121 @@ namespace DovizOtomasyon
             finally
             {
                 baglan.Close();
+            }
+            */
+            try
+            {   //// where kullanici_adi='" + kullanici_adi + "'
+
+                // İşlem türünü tespit et kaydet
+                string islemTuruIndex;
+                if (islemTurucomboBox.Text == "Alış")
+                {
+                    islemTuruIndex = Convert.ToString(1);
+                }
+                else
+                {
+                    islemTuruIndex = Convert.ToString(2);
+                }
+
+                //Döviz türünü tespit et
+
+                baglan.Open();
+                string selectQuery = "SELECT * FROM dovizotomasyon.doviz";
+                MySqlCommand komut3 = new MySqlCommand(selectQuery, baglan);
+                string seciliDovizLogo = dovizCinsicomboBox.SelectedItem.ToString();
+                seciliDovizLogo = seciliDovizLogo[0].ToString();
+                komut3.CommandText = "SELECT * FROM doviz WHERE doviz_logo = '" + seciliDovizLogo + "'";
+                oku = komut3.ExecuteReader();
+
+                while (oku.Read())
+                {
+                    doviz_id = Convert.ToString(oku["doviz_id"]);
+                    doviz_adi = Convert.ToString(oku["doviz_adi"]);
+                    doviz_tam_adi = Convert.ToString(oku["doviz_tam_adi"]);
+                    doviz_logo = Convert.ToString(oku["doviz_logo"]);
+                }
+                oku.Close();
+                baglan.Close();
+
+                // Döviz türünü tespit et tamamlandı
+
+
+                // Miktarı kaydet
+                baglan.Open();
+
+                decimal tam_kisim;
+                decimal ondalik_kisim;
+
+                if (string.IsNullOrWhiteSpace(alisverisMiktarTextBox.Text) && string.IsNullOrWhiteSpace(alisverisMiktarOndalikTextBox.Text))
+                {
+                    tam_kisim = 0;
+                    ondalik_kisim = 0;
+                }
+
+                else
+                {
+                    tam_kisim = Convert.ToDecimal(alisverisMiktarTextBox.Text);
+                    ondalik_kisim = Convert.ToDecimal(alisverisMiktarOndalikTextBox.Text);
+                }
+
+
+                // https://stackoverflow.com/questions/4483886/how-can-i-get-a-count-of-the-total-number-of-digits-in-a-number
+                // Log10(sayı) bize "sayı"nın kaç basamaklı olduğunu verir (yukarı yuvarlanırsa) 
+                double bolme_islemi = Math.Floor(Math.Log10(Convert.ToDouble(ondalik_kisim)) + 1);
+
+                // Örnek : Ondalık sayı 23
+                // log10(23) = 1,36 -> yukarı yuvarla -> karakter sayısı = 2
+                // 23 / 10 ^ karakter_sayısı = 0.23
+                ondalik_kisim = (ondalik_kisim / Convert.ToDecimal(Math.Pow(10, bolme_islemi)));
+                decimal alisverisMiktar = tam_kisim + ondalik_kisim;
+
+                alisverisTest.Text = alisverisMiktar.ToString();
+                string insertIslem = "INSERT INTO alısveris(tarih,islem_id, doviz_id, personel_id, miktar) VALUES(NOW()," + islemTuruIndex + "," + doviz_id + "," + personel_id + "," + alisverisMiktar + ");";
+                MySqlCommand command = new MySqlCommand(insertIslem, baglan);
+
+                // Komutu çalıştır
+                command.ExecuteNonQuery();
+                baglan.Close();
+
+                //Alış satış fiyatını al ve işlem yap
+
+                baglan.Open();
+                string degerQuery = "SELECT * FROM dovizotomasyon.deger";
+                MySqlCommand komut4 = new MySqlCommand(degerQuery, baglan);
+                oku = komut4.ExecuteReader();
+
+                while (oku.Read())
+                {
+                    if (islemTurucomboBox.Text == "Alış")
+                    {
+                        komut4.CommandText = "SELECT * FROM deger.alis_fiyat WHERE doviz_id = " + doviz_id + "";
+                        donustur_deger = Convert.ToDecimal(oku["alis_fiyat"]);
+                        karsilik_deger = donustur_deger * alisverisMiktar;
+                        karsilikDegerLabel.Text = Convert.ToString(karsilik_deger);
+
+                    }
+                    else
+                    {
+                        komut4.CommandText = "SELECT * FROM deger.satis_fiyat WHERE doviz_id = " + doviz_id + "";
+                        donustur_deger = Convert.ToDecimal(oku["satis_fiyat"]);
+                        karsilik_deger = donustur_deger * (1 / alisverisMiktar);
+                        karsilikDegerLabel.Text = Convert.ToString(karsilik_deger);
+                    }
+                }
+
+                oku.Close();
+                baglan.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Döviz türü listesinde hata: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            finally
+            {
+                baglan.Close();
+                yeniIslemFormTemizle();
             }
         }
 
@@ -780,15 +1032,20 @@ namespace DovizOtomasyon
                 geriSayimLabel.Text = "-";
             }
 
-            geriSayimLabel.Text = Convert.ToString((int.Parse(geriSayimLabel.Text) - 1));
+            else
+            {
+                geriSayimLabel.Text = Convert.ToString((int.Parse(geriSayimLabel.Text) - 1));
+            }
+            
         }
 
         private void alisverisMiktarTextBox_TextChanged(object sender, EventArgs e)
         {
             alisverisMiktarTextBox.Text = alisverisMiktarTextBox.Text.Replace(" ", "");
             alisverisMiktarOndalikTextBox.Text = alisverisMiktarOndalikTextBox.Text.Replace(" ", "");
+            islemGuncelle();
             //yeni bir değer girildiğinde karşılığını hesapla
-            karsilikDegerLabel.Text = "";
+            //karsilikDegerLabel.Text = "";
         }
 
         // KULLANICI GİRİŞ FORM VERİLERİ

@@ -272,8 +272,8 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.girisYapPanel);
             this.mainPanel.Controls.Add(this.alisSatisMainPanel);
+            this.mainPanel.Controls.Add(this.girisYapPanel);
             this.mainPanel.Controls.Add(this.muhasebePanel);
             this.mainPanel.Controls.Add(this.kurlarPanel);
             this.mainPanel.Controls.Add(this.bankaKurlarPanel);
@@ -505,10 +505,10 @@
             this.karsilikDegerLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.karsilikDegerLabel.Location = new System.Drawing.Point(172, 306);
             this.karsilikDegerLabel.Name = "karsilikDegerLabel";
-            this.karsilikDegerLabel.Size = new System.Drawing.Size(91, 41);
+            this.karsilikDegerLabel.Size = new System.Drawing.Size(282, 41);
             this.karsilikDegerLabel.TabIndex = 21;
             this.karsilikDegerLabel.Text = "Birim seç";
-            this.karsilikDegerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.karsilikDegerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // miktarLabel
             // 
@@ -644,6 +644,8 @@
             this.alisverisMiktarOndalikTextBox.Name = "alisverisMiktarOndalikTextBox";
             this.alisverisMiktarOndalikTextBox.Size = new System.Drawing.Size(130, 38);
             this.alisverisMiktarOndalikTextBox.TabIndex = 25;
+            this.alisverisMiktarOndalikTextBox.Text = "0000";
+            this.alisverisMiktarOndalikTextBox.TextChanged += new System.EventHandler(this.alisverisMiktarTextBox_TextChanged);
             this.alisverisMiktarOndalikTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.alisverisMiktarTextBox_KeyPress);
             // 
             // noktaTextBox
@@ -776,7 +778,7 @@
             // 
             this.alisverisTest.AutoSize = true;
             this.alisverisTest.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.alisverisTest.Location = new System.Drawing.Point(153, 421);
+            this.alisverisTest.Location = new System.Drawing.Point(103, 373);
             this.alisverisTest.Name = "alisverisTest";
             this.alisverisTest.Size = new System.Drawing.Size(69, 25);
             this.alisverisTest.TabIndex = 27;
